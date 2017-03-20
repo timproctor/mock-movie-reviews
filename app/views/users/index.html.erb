@@ -3,9 +3,9 @@
 </header>
 
 <ul id="users">
-<% @users.each do |user| %>
-  <li>
-    <%= link_to user.name, user %>
-  </li>
-<% end %>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user %>
+    </li>
+  <% end %>
 </ul>
