@@ -50,12 +50,15 @@ describe "A user" do
     expect(user.valid?).to eq(true)
   end
 
-  it "requires a password" do
-    user = User.new(password: "")
+  it "requires a password that is at least 6 characters" do
+    user = User.new(password: "four")
+    user1 = User.new(password: "sixsix")
 
     user.valid?
+    user1.valid?
 
     expect(user.errors[:password].any?).to eq(true)
+    expect(user1.errors[:password].any?).to eq(false)
   end
 
   it "requires a password confirmation when a password is present" do
