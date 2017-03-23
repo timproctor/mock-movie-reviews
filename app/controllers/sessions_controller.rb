@@ -4,9 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    email = params[:email]
-    password = params[:password]
-    user = User.authenticate_user(email, password)
+    user = User.authenticate_user(params[:email], params[:password])
 
     if user
       session[:user_id] = user.id
