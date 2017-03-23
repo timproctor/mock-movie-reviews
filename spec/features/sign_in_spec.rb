@@ -32,4 +32,23 @@ describe "Signing in" do
     expect(page).not_to have_link('Sign Up')
   end
 
+  it "does not sign in the user if the email/password combination is invalid" do
+    visit root_url
+
+    click_link 'Sign In'
+
+    user = default_user
+
+    fill_in "Email", with: "default@example.com"
+    fill_in "Password", with: "nomatch"
+
+    within '#container' do
+      click_on 'Sign In'
+    end
+
+    expect(page).not_to have_link("Default")
+    expect(page).to have_link('Sign In')
+    expect(page).to have_link('Sign Up')
+end
+
 end
