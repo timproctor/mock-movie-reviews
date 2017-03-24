@@ -14,11 +14,10 @@ describe "Signing in" do
   end
 
   it "signs in the user if the email/password combination is valid" do
+    default_user
     visit root_url
 
     click_link 'Sign In'
-
-    user = default_user
 
     fill_in "Email", with: "default@example.com"
     fill_in "Password", with: "supersecret"
@@ -33,11 +32,11 @@ describe "Signing in" do
   end
 
   it "does not sign in the user if the email/password combination is invalid" do
+    default_user
+
     visit root_url
 
     click_link 'Sign In'
-
-    user = default_user
 
     fill_in "Email", with: "default@example.com"
     fill_in "Password", with: "nomatch"
