@@ -27,4 +27,11 @@ private
   end
 
   helper_method :is_an_admin?
+
+  def require_admin
+    unless is_an_admin?
+      redirect_to root_url, alert: "Sorry, we can't let you do that."
+    end
+  end
+
 end

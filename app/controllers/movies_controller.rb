@@ -49,9 +49,4 @@ private
       permit(:title, :description, :rating, :released_on, :total_gross, :cast, :director, :duration, :image_file_name)
   end
 
-  def require_admin
-    unless current_user.admin?
-      redirect_to root_url, alert: "Sorry, we can't let you do that."
-    end
-  end
 end

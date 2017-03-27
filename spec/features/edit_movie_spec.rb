@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe "Editing a movie" do
+  
+  before do
+    admin = User.create!(user_attributes(admin: true))
+    sign_in(admin)
+  end
 
   it "updates the movie and shows the movie's updated details" do
     movie = Movie.create!(movie_attributes)
@@ -25,13 +30,13 @@ describe "Editing a movie" do
 
   it "does not update the movie if it's invalid" do
     movie = Movie.create!(movie_attributes)
-    
+
     visit edit_movie_url(movie)
-    
+
     fill_in 'Title', with: " "
-    
-    click_button 'Update Movie' 
-        
+
+    click_button 'Update Movie'
+
     expect(page).to have_text('error')
   end
 

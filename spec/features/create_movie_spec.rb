@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe "Creating a new movie" do
+
+  before do
+    admin = User.create!(user_attributes(admin: true))
+    sign_in(admin)
+  end
+  
   it "saves the movie and shows the new movie's details" do
     visit movies_url
 
@@ -17,7 +23,7 @@ describe "Creating a new movie" do
     fill_in "Director", with: "The ever-creative director"
     fill_in "Duration", with: "123 min"
     fill_in "Image file name", with: "movie.png"
-    
+
     # If you're taking advantage of the HTML 5 date field in Chrome,
     # you'll need to use 'fill_in' rather than 'select'
     # fill_in "Released on", with: (Time.now.year - 1).to_s
@@ -32,12 +38,12 @@ describe "Creating a new movie" do
 
   it "does not save the movie if it's invalid" do
     visit new_movie_url
-    
-    expect { 
-      click_button 'Create Movie' 
+
+    expect {
+      click_button 'Create Movie'
     }.not_to change(Movie, :count)
-    
-    expect(current_path).to eq(movies_path)   
+
+    expect(current_path).to eq(movies_path)
     expect(page).to have_text('error')
   end
 end
