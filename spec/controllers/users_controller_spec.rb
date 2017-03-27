@@ -41,8 +41,9 @@ describe UsersController do
 
       expect(response).to redirect_to(new_session_url)
     end
-
-    context "when signed in as the wrong user" do
+  end
+  
+  context "when signed in as the wrong user" do
 
     before do
       @wrong_user = User.create!(user_attributes(email: "wrong@example.com"))
