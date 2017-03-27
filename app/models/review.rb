@@ -1,5 +1,6 @@
 class Review < ApplicationRecord
-  validates :name, presence: true
+  belongs_to :movie
+  belongs_to :user
 
   validates :comment, length: { minimum: 4 }
 
@@ -9,6 +10,5 @@ class Review < ApplicationRecord
     in: STARS,
     message: "must be between 1 and 5"
   }
-  
-  belongs_to :movie
+
 end
