@@ -96,4 +96,21 @@ describe "A user" do
 
     expect(user.password_digest.present?).to eq(true)
   end
+
+  it "is connected to reviews" do
+    user = User.new(user_attributes)
+    movie1 = Movie.new(movie_attributes(title: "Iron Man"))
+    movie2 = Movie.new(movie_attributes(title: "Superman"))
+
+    review1 = movie1.reviews.new(stars: 5, comment: "Awesome!")
+    review1.user = user
+    review1.save!
+
+    review2 = movie2.review.new(stars: 1, comment: "Ugh")
+    review2.user = user
+    review2.save!
+
+    expect(user.reviews).to include(review1)
+    expect(user.reviews).to include(review2)
+  end
 end
