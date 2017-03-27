@@ -8,21 +8,21 @@
   <p>
     <%= @movie.description %>
   </p>
-  
+
   <h3 class="no-rule">
-    <%= @movie.rating %> &bull; <%= @movie.duration %> 
+    <%= @movie.rating %> &bull; <%= @movie.duration %>
   </h3>
-  
+
   <h3>Cast</h3>
   <p>
     <%= @movie.cast %>
   </p>
-  
+
   <h3>Director</h3>
   <p>
     <%= @movie.director %>
   </p>
-  
+
   <h3>Total Gross</h3>
   <p>
     <%= format_total_gross(@movie) %>
@@ -35,18 +35,20 @@
 
   <h3>Reviews</h3>
   <p>
-    <%= link_to pluralize(@movie.reviews.size, "review"), 
+    <%= link_to pluralize(@movie.reviews.size, "review"),
                 movie_reviews_path(@movie) %>
   </p>
-  
+
   <footer>
-    <%= link_to "Write Review", new_movie_review_path(@movie), 
+    <%= link_to "Write Review", new_movie_review_path(@movie),
                 class: 'button ok review' %>
     <nav>
-      <%= link_to 'Edit', edit_movie_path(@movie), class: 'button' %>
-      <%= link_to 'Delete', @movie, 
-                  class: 'button',
-                  method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% if is_an_admin? %>
+        <%= link_to 'Edit', edit_movie_path(@movie), class: 'button' %>
+        <%= link_to 'Delete', @movie,
+                    class: 'button',
+                    method: :delete, data: { confirm: 'Are you sure?' } %>
+      <% end %>
     </nav>
   </footer>
 </article>
