@@ -9,6 +9,7 @@
     <% @reviews.each do |review| %>
       <li>
       <%= link_to review.movie.title, review.movie %>
+      (<%= time_ago_in_words(review.created_at)%> ago.)
       </li>
     <% end %>
   </ul>
