@@ -40,6 +40,8 @@ article#movie {
     float: right;
     margin: 0 0 20px 20px;
     border: 3px solid $subdued-color;
+    width: 96px;
+    height: 130px;
   }
 
   ul.review-stats {
@@ -198,11 +200,11 @@ ol#favorites {
         color: $secondary-text-color;
       }
     }
-    
+
     a {
       font-weight: normal;
     }
-    
+
     img {
       margin-right: 5px;
       vertical-align: middle;
@@ -220,7 +222,7 @@ ol#favorites {
   text-align: center;
   text-transform: uppercase;
   box-shadow: #ffc 0 0 4px;
-  
+
   &.notice {
     background-color: $flash-notice-color;
   }
