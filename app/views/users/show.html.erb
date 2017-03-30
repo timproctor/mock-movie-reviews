@@ -9,10 +9,10 @@
     <% @reviews.each do |review| %>
       <li>
         <%= link_to review.movie.title, review.movie %>
-        <span class="review"><%= pluralize(review.starts, 'star') %></span>
+        <span class="review"><%= pluralize(review.stars, 'star') %></span>
         <span class="date">(<%= time_ago_in_words(review.created_at)%> ago.)</span>
         <p>
-          &quote;<%= review.comment %>&quot;
+          &quote;<%= review.comment %>&quote;
         </p>
       </li>
     <% end %>
