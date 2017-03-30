@@ -13,7 +13,7 @@ describe "Deleting a review" do
     review2 = movie.reviews.create(review_attributes(user_id: @user.id))
 
     visit movie_reviews_url(movie)
-    
+
     expect(page).to have_text(review1.user.name)
     expect(page).to have_text(review2.user.name)
 
@@ -22,6 +22,6 @@ describe "Deleting a review" do
     expect(current_path).to eq(movie_reviews_path(movie))
 
     expect(page).to have_text("Review successfully deleted!")
-    expect(page).not_to have_text(review1.user.name)
+    expect("#container").not_to have_text(review1.user.name)
   end
 end

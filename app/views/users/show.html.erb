@@ -12,7 +12,7 @@
         <span class="review"><%= pluralize(review.stars, 'star') %></span>
         <span class="date">(<%= time_ago_in_words(review.created_at)%> ago.)</span>
         <p>
-          &quote;<%= review.comment %>&quote;
+          &quot;<%= review.comment %>&quot;
         </p>
       </li>
     <% end %>
