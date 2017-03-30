@@ -32,7 +32,7 @@ describe "A movie" do
 
     expect(Movie.released).to eq([movie3, movie2, movie1])
   end
-  
+
   it "requires a title" do
     movie = Movie.new(title: "")
 
@@ -150,9 +150,11 @@ describe "A movie" do
   end
 
   it "deletes associated reviews" do
+    @user = User.create!(user_attributes)
+
     movie = Movie.create!(movie_attributes)
 
-    movie.reviews.create!(review_attributes)
+    movie.reviews.create!(review_attributes(user_id: @user.id))
 
     expect {
       movie.destroy
@@ -160,12 +162,14 @@ describe "A movie" do
   end
 
   it "calculates the average number of review stars" do
+    @user = User.create!(user_attributes)
+
     movie = Movie.create!(movie_attributes)
 
-    movie.reviews.create!(review_attributes(stars: 1))
-    movie.reviews.create!(review_attributes(stars: 3))
-    movie.reviews.create!(review_attributes(stars: 5))
-    
+    movie.reviews.create!(review_attributes(stars: 1, user_id: @user.id))
+    movie.reviews.create!(review_attributes(stars: 3, user_id: @user.id))
+    movie.reviews.create!(review_attributes(stars: 5, user_id: @user.id))
+
     expect(movie.average_stars).to eq(3)
   end
 
@@ -207,6 +211,5 @@ describe "A movie" do
 
       expect(Movie.flops).to eq([movie2])
     end
-  end    
+  end
 end
-    
