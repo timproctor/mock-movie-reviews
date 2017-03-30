@@ -11,9 +11,11 @@ describe "A review" do
   end
 
   it "with example attributes is valid" do
+    @user = User.create!(user_attributes)
+
     movie = Movie.create(movie_attributes)
 
-    review = Review.new(review_attributes)
+    review = Review.new(review_attributes(user_id: @user.id))
 
     review.movie = movie
     expect(review.valid?).to eq(true)
