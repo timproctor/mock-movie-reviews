@@ -102,7 +102,7 @@ describe "A user" do
     movie1 = Movie.new(movie_attributes(title: "Iron Man"))
     movie2 = Movie.new(movie_attributes(title: "Superman"))
 
-    review1 = movie1.reviews.new(stars: 5, comment: "Awesome!")
+    review1 = movie1.reviews.new(stars: 5, comment: "Awesome!", user_id: user.id)
     review1.user = user
     review1.save!
 
