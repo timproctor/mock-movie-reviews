@@ -16,7 +16,7 @@ class Movie < ApplicationRecord
 
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :users, :through => :likes
+  has_many :users, through: :likes
 
   def self.released
     where("released_on <= ?", Time.now).order("released_on desc")
