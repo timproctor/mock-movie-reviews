@@ -3,6 +3,15 @@
     <h1><%= @user.name %></h1>
     <h2><%= mail_to(@user.email) %></h2>
   </header>
+  <% if @liked_movies.any? %>
+  <h3><%= pluralize_without_count(@liked_movies.count, 'One Like For', 'Liked These')%></h3>
+  <ul>
+    <% @liked_movies.each do |movie| %>
+      <li>
+        <%= link_to movie.title, movie %>
+      </li>
+    <% end %>
+  <% end %>
   <% if @reviews.any? %>
   <h3>Reviews For</h3>
   <ul>
