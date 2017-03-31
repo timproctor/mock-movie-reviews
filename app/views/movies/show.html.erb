@@ -38,19 +38,19 @@
     <%= link_to pluralize(@movie.reviews.size, "review"),
                 movie_reviews_path(@movie) %>
   </p>
-  <p>
+  <h3>
     <%= pluralize(@fans.count, 'like')%>
-  </p>
-  <% if @fans.any? %>
+    <% if @fans.any? %>
     <h3>Fans</h3>
-    <ul>
-      <% @fans.each do |user| %>
-        <li>
-          <%= link_to user.name, user %>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
+      <ul>
+        <% @fans.each do |user| %>
+          <li>
+            <%= link_to user.name, user %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  <h3>
   <footer>
     <%= link_to "Write Review", new_movie_review_path(@movie),
                 class: 'button ok review' %>
