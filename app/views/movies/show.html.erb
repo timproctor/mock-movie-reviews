@@ -38,7 +38,19 @@
     <%= link_to pluralize(@movie.reviews.size, "review"),
                 movie_reviews_path(@movie) %>
   </p>
-
+  <p>
+    <%= pluralize(@fans.count, 'like')%>
+  </p>
+  <% if @fans.any? %>
+    <h3>Fans</h3>
+    <ul>
+      <% @fans.each do |user| %>
+        <li>
+          <% link_to user.name, user %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
   <footer>
     <%= link_to "Write Review", new_movie_review_path(@movie),
                 class: 'button ok review' %>
