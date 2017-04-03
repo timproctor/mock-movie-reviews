@@ -106,11 +106,23 @@ describe "A user" do
     review1.user = user
     review1.save!
 
-    review2 = movie2.review.new(stars: 1, comment: "Ugh")
+    review2 = movie2.reviews.new(stars: 1, comment: "what? sucked.")
     review2.user = user
     review2.save!
 
     expect(user.reviews).to include(review1)
     expect(user.reviews).to include(review2)
+  end
+
+  it "has favorite movies" do
+    user = User.new(user_attributes)
+    movie1 = Movie.new(movie_attributes(title: "Iron Man"))
+    movie2 = Movie.new(movie_attributes(title: "Superman"))
+
+    user.likes.new(movie: movie1)
+    user.likes.new(movie: movie2)
+
+    expect(user.liked_movies).to include(movie1)
+    expect(user.liked_movies).to include(movie2)
   end
 end
