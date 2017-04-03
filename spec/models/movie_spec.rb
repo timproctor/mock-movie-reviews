@@ -173,6 +173,18 @@ describe "A movie" do
     expect(movie.average_stars).to eq(3)
   end
 
+  it "has fans" do
+    movie = Movie.new(movie_attributes)
+    fan1 = User.new(user_attributes(email: "larry@example.com"))
+    fan2 = User.new(user_attributes(email: "moe@example.com"))
+
+    movie.likes.new(user: fan1)
+    movie.likes.new(user: fan2)
+
+    expect(movie.fans).to include(fan1)
+    expect(movie.fans).to include(fan2)
+  end
+
   context "released query" do
     it "returns the movies with a released on date in the past" do
       movie = Movie.create!(movie_attributes(released_on: 3.months.ago))
@@ -212,4 +224,6 @@ describe "A movie" do
       expect(Movie.flops).to eq([movie2])
     end
   end
+
+
 end
