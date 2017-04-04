@@ -9,7 +9,7 @@ class LikesController < ApplicationController
   end
 
   def show
-    @movie = Movie.find(params[:movie_id])
+    @movie = Movie.find(params[:id])
     @fans = @movie.fans
 
     if current_user
