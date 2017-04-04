@@ -8,12 +8,4 @@ class LikesController < ApplicationController
     redirect_to @movie, notice: "You liked it!"
   end
 
-  def show
-    @movie = Movie.find(params[:id])
-    @fans = @movie.fans
-
-    if current_user
-      @current_like = current_user.likes.find_by(movie_id: @movie.id)
-    end
-  end
 end

@@ -41,7 +41,7 @@
   <h3>
     <%= pluralize(@fans.count, 'like')%>
     <% if current_user %>
-      <% if @current_like %>
+      <% if @currently_liked %>
         <%= button_to('Unlike It!', '#') %>
       <% else %>
         <%= button_to('Like It!', movie_likes_path(@movie)) %>
