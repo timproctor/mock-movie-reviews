@@ -42,7 +42,7 @@
     <%= pluralize(@fans.count, 'like')%>
     <% if current_user %>
       <% if @currently_liked %>
-        <%= button_to('Unlike It!', '#') %>
+        <%= button_to 'Unlike It!', movie_like_path(@movie, @currently_liked), method: :delete %>
       <% else %>
         <%= button_to('Like It!', movie_likes_path(@movie)) %>
       <% end %>

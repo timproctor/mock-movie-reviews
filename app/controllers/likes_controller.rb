@@ -8,4 +8,11 @@ class LikesController < ApplicationController
     redirect_to @movie, notice: "You liked it!"
   end
 
+  def destroy
+    @movie = Movie.find(params[:movie_id])
+    liked = current_user.likes.find(params[:id])
+    liked.destroy
+
+    redirect_to @movie, notice: "Successfully unliked!"
+  end
 end
