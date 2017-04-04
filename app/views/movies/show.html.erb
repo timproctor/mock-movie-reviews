@@ -40,6 +40,9 @@
   </p>
   <h3>
     <%= pluralize(@fans.count, 'like')%>
+    <% if current_user %>
+      <%= button_to('Like It!', movie_likes_path(@movie)) %>
+    <% end %>
     <% if @fans.any? %>
     <h3>Fans</h3>
       <ul>
