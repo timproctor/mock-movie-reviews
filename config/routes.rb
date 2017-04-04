@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :likes
   resource :session
 
   get 'signup' => 'users#new'
@@ -9,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :movies do
     resources :reviews
+    resources :likes
   end
 end
