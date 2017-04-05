@@ -5,7 +5,7 @@ class LikesController < ApplicationController
   def create
     @movie.likes.create!(user: current_user)
 
-    redirect_to @movie, notice: "You liked it!"
+    redirect_to @movie, notice: "Liked It Successfully"
   end
 
   def destroy
