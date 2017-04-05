@@ -12,7 +12,7 @@ class LikesController < ApplicationController
     liked = current_user.likes.find(params[:id])
     liked.destroy
 
-    redirect_to @movie, notice: "Successfully unliked!"
+    redirect_to @movie, notice: "Unliked Successfully"
   end
 
 private
