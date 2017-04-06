@@ -10,9 +10,9 @@ describe "Unliking a movie" do
     movie = Movie.create!(movie_attributes)
 
     visit movie_url(movie)
-    click_button 'Like'
+    click_button 'Like It!'
 
-    expect(page).to have_text("1 Fan")
+    expect(page).to have_text("Fans")
 
     expect {
       click_button 'Unlike'
@@ -20,8 +20,8 @@ describe "Unliking a movie" do
 
     expect(current_path).to eq(movie_path(movie))
 
-    expect(page).to have_text("Yes, you unliked it!")
-    expect(page).to have_text("0 fans")
+    expect(page).to have_text("Unliked Successfully")
+    expect(page).not_to have_text("Fans")
     expect(page).to have_button("Like It")
   end
 
