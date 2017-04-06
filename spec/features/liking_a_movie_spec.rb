@@ -14,13 +14,13 @@ describe "Liking a movie" do
     expect(page).to have_text("0 like")
 
     expect {
-      click_button 'Like'
+      click_button 'Like It!'
     }.to change(@user.likes, :count).by(1)
 
     expect(current_path).to eq(movie_path(movie))
 
-    expect(page).to have_text("Thanks for liking!")
-    expect(page).to have_text("1 fan")
+    expect(page).to have_text("Liked It Successfully")
+    expect(page).to have_text("Fans")
     expect(page).to have_button("Unlike")
   end
 end
