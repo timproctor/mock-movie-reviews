@@ -44,7 +44,7 @@
       <% if @currently_liked %>
         <%= button_to 'Unlike It!', movie_like_path(@movie, @currently_liked), method: :delete, class: "unlike" %>
       <% else %>
-        <%= button_to('Like It!', movie_likes_path(@movie)), class: "like" %>
+        <%= button_to 'Like It!', movie_likes_path(@movie), class: "like" %>
       <% end %>
     <% end %>
     <% if @fans.any? %>
