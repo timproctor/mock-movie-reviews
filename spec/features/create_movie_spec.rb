@@ -5,8 +5,11 @@ describe "Creating a new movie" do
   before do
     admin = User.create!(user_attributes(admin: true))
     sign_in(admin)
+    @genre1 = Genre.create!(type: "Action")
+    @genre2 = Genre.create!(type: "Romance")
+    @genre3 = Genre.create!(type: "Sci-Fi")
   end
-  
+
   it "saves the movie and shows the new movie's details" do
     visit movies_url
 
