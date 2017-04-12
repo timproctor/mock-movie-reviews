@@ -53,8 +53,10 @@ describe "Creating a new movie" do
   it "applies genres to the movie" do
     visit new_movie_url
 
-    expect {
-      check 'Action'
-    }.to change(Movie.genres, :count)
+    check(@genre1.type)
+
+    expect(page).to have_text(@genre1.type)
+    expect(page).not_to have_text(@genre2.type)
+    expect(page).not_to have_text(@genre3.type)
   end
 end
