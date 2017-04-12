@@ -49,4 +49,12 @@ describe "Creating a new movie" do
     expect(current_path).to eq(movies_path)
     expect(page).to have_text('error')
   end
+
+  it "applies genres to the movie" do
+    visit new_movie_url
+
+    expect {
+      check 'Action'
+    }.to change(Movie.genres, :count)
+  end
 end
