@@ -57,6 +57,6 @@ describe "Creating a new movie" do
 
     expect(page).to have_text(@genre1.type)
     expect(page).not_to have_text(@genre2.type)
-    expect(page).not_to have_text(@genre3.type)
+    expect(page).not_to have_text(@genre3.type)m
   end
 end
