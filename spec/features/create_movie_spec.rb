@@ -5,9 +5,9 @@ describe "Creating a new movie" do
   before do
     admin = User.create!(user_attributes(admin: true))
     sign_in(admin)
-    @genre1 = Genre.create!(type: "Action")
-    @genre2 = Genre.create!(type: "Romance")
-    @genre3 = Genre.create!(type: "Sci-Fi")
+    @genre1 = Genre.create!(name: "Action")
+    @genre2 = Genre.create!(name: "Romance")
+    @genre3 = Genre.create!(name: "Sci-Fi")
   end
 
   it "saves the movie and shows the new movie's details" do
@@ -53,10 +53,10 @@ describe "Creating a new movie" do
   it "applies genres to the movie" do
     visit new_movie_url
 
-    check(@genre1.type)
+    check(@genre1.name)
 
-    expect(page).to have_text(@genre1.type)
-    expect(page).not_to have_text(@genre2.type)
-    expect(page).not_to have_text(@genre3.type)m
+    expect(page).to have_text(@genre1.name)
+    expect(page).not_to have_text(@genre2.name)
+    expect(page).not_to have_text(@genre3.name)
   end
 end
