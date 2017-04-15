@@ -17,6 +17,8 @@ class Movie < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :fans, through: :likes, source: :user
+  has_many :characterizations, dependent: :destroy
+  has_many :genres, through: :characterizations
 
   def self.released
     where("released_on <= ?", Time.now).order("released_on desc")
