@@ -58,10 +58,10 @@
       </ul>
     <% end %>
   <h3>
-    <% if @movie.genres.any? %>
+    <% if @genres.any? %>
     <h3>Genres</h3>
       <ul>
-        <% @movie.genres.each do |genre| %>
+        <% @genres.each do |genre| %>
           <li>
             <%= genre.name %>
           </li>
