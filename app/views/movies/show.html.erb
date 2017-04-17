@@ -58,6 +58,17 @@
       </ul>
     <% end %>
   <h3>
+    <% if @movie.genres.any? %>
+    <h3>Genres</h3>
+      <ul>
+        <% @movie.genres.each do |genre| %>
+          <li>
+            <%= genre.name %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
   <footer>
     <%= link_to "Write Review", new_movie_review_path(@movie),
                 class: 'button ok review' %>
