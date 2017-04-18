@@ -21,7 +21,6 @@ class MoviesController < ApplicationController
   end
 
   def update
-    fail
     @movie = Movie.find(params[:id])
     if @movie.update(movie_params)
       redirect_to @movie, notice: "Movie successfully updated!"
@@ -54,7 +53,8 @@ private
 
   def movie_params
     params.require(:movie).
-      permit(:title, :description, :rating, :released_on, :total_gross, :cast, :director, :duration, :image_file_name)
+      permit(:title, :description, :rating, :released_on, :total_gross,
+             :cast, :director, :duration, :image_file_name, genre_ids: [])
   end
 
 end
