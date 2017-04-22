@@ -52,7 +52,7 @@ describe "Viewing an individual movie" do
 
     visit movie_url(movie)
 
-    expect(page).to have_title("Flix = #{movie.title}")
+    expect(page).to have_title("Flix - #{movie.title}")
   end
 
 end
