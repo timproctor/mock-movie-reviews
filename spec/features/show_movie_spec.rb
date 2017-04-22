@@ -42,7 +42,7 @@ describe "Viewing an individual movie" do
     visit movie_url(movie)
 
     within("aside#sidebar") do
-      expect(page).to have_test(user.name)
+      expect(page).to have_text(user.name)
       expect(page).to have_text(genre.name)
     end
   end
