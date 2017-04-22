@@ -33,7 +33,7 @@ describe "Viewing an individual movie" do
   it "shows the movie's likes and genres in the sidebar" do
     movie = Movie.create!(movie_attributes)
 
-    user = User.create!(user_attribues)
+    user = User.create!(user_attributes)
     movie.fans << user
 
     genre = Genre.create!(name: "Action")
