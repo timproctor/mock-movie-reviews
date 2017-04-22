@@ -68,6 +68,16 @@ describe "Viewing an individual movie" do
     within("aside#sidebar") do
       expect(page).to have_text(movie.title)
     end
+
+    it "includes the user's name in the page title" do
+      user = User.create!(user_attributes)
+
+      sign_in(user)
+
+      visit user_url(user)
+
+      expect(page).to have_title("Flix - #{user.name}")
+    end
   end
 
 end
