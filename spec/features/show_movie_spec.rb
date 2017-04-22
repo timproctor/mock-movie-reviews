@@ -47,4 +47,12 @@ describe "Viewing an individual movie" do
     end
   end
 
+  it "includes the movie's title in the page title" do
+    movie = Movie.create!(movie_attributes)
+
+    visit movie_url
+
+    expect(page).to have_title("Flix = #{movie.title}")
+  end
+
 end
