@@ -16,9 +16,9 @@ describe "Viewing an individual movie" do
 
   it "shows the total gross if the total gross exceeds $50M" do
     movie = Movie.create!(movie_attributes(total_gross: 60000000.00))
-    
+
     visit movie_url(movie)
-    
+
     expect(page).to have_text("$60,000,000.00")
   end
 
@@ -28,6 +28,23 @@ describe "Viewing an individual movie" do
     visit movie_url(movie)
 
     expect(page).to have_text("Flop!")
+  end
+
+  it "shows the movie's likes and genres in the sidebar" do
+    movie = Movie.create!(movie_attributes)
+
+    user = User.create!(user_attribues)
+    movie.fans << user
+
+    genre = Genre.create!(name: "Action")
+    movie.genres << genres
+
+    visit movie_url(movie)
+
+    within("aside#sidebar") do
+      expect(page).to have_test(user.name)
+      expect(page).to have_text(genre.name)
+    end
   end
 
 end
