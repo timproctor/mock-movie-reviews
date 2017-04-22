@@ -37,7 +37,7 @@ describe "Viewing an individual movie" do
     movie.fans << user
 
     genre = Genre.create!(name: "Action")
-    movie.genres << genres
+    movie.genres << genre
 
     visit movie_url(movie)
 
