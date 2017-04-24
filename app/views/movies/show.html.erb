@@ -47,16 +47,6 @@
         <%= button_to 'Like It!', movie_likes_path(@movie), class: "button like" %>
       <% end %>
     <% end %>
-    <% if @fans.any? %>
-    <h3>Fans</h3>
-      <ul>
-        <% @fans.each do |user| %>
-          <li>
-            <%= link_to user.name, user %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
   <h3>
     <% if @genres.any? %>
     <h3>Genres</h3>
@@ -69,6 +59,18 @@
       </ul>
     <% end %>
 
+    <% content_for :list_fans %>
+      <% if @fans.any? %>
+      <h3>Fans</h3>
+      <ul>
+        <% @fans.each do |user| %>
+        <li>
+          <%= link_to user.name, user %>
+        </li>
+        <% end %>
+      </ul>
+      <% end %>
+    <% end %>
   <footer>
     <%= link_to "Write Review", new_movie_review_path(@movie),
                 class: 'button ok review' %>
