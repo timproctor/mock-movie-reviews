@@ -60,7 +60,7 @@
     <% end %>
 
     <% content_for :list_fans do %>
-      <% if @fans.any? do %>
+      <% if @fans.any? %>
       <h3>Fans</h3>
       <ul>
         <% @fans.each do |user| %>
