@@ -59,7 +59,7 @@
       </ul>
     <% end %>
 
-    <% content_for :list_fans %>
+    <% content_for :list_fans do %>
       <% if @fans.any? do %>
       <h3>Fans</h3>
       <ul>
