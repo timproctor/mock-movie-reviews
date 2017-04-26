@@ -48,27 +48,27 @@
       <% end %>
     <% end %>
   <h3>
-    <% if @genres.any? %>
-    <h3>Genres</h3>
-      <ul>
-        <% @genres.each do |genre| %>
+
+    <% content_for :list_fans do %>
+      <% if @genres.any? %>
+        <h3>Genres</h3>
+        <ul>
+          <% @genres.each do |genre| %>
           <li>
             <%= genre.name %>
           </li>
-        <% end %>
-      </ul>
-    <% end %>
-
-    <% content_for :list_fans do %>
+          <% end %>
+        </ul>
+      <% end %>
       <% if @fans.any? %>
-      <h3>Fans</h3>
-      <ul>
-        <% @fans.each do |user| %>
-        <li>
-          <%= link_to user.name, user %>
-        </li>
-        <% end %>
-      </ul>
+        <h3>Fans</h3>
+        <ul>
+          <% @fans.each do |user| %>
+          <li>
+            <%= link_to user.name, user %>
+          </li>
+          <% end %>
+        </ul>
       <% end %>
     <% end %>
   <footer>
