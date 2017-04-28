@@ -1,5 +1,5 @@
 module ApplicationHelper
-  def title
+  def page_title
     if user_path(@user) | movie_path(@path)
       "Flix - #{content_for :title}"
     else
