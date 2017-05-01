@@ -27,9 +27,6 @@ describe "Creating a new movie" do
     fill_in "Duration", with: "123 min"
     fill_in "Image file name", with: "movie.png"
 
-    # If you're taking advantage of the HTML 5 date field in Chrome,
-    # you'll need to use 'fill_in' rather than 'select'
-    # fill_in "Released on", with: (Time.now.year - 1).to_s
 
     click_button 'Create Movie'
 
@@ -56,7 +53,7 @@ describe "Creating a new movie" do
     check(@genre1.name)
 
     expect(page).to have_text(@genre1.name)
-    expect(page).not_to have_text(@genre2.name)
-    expect(page).not_to have_text(@genre3.name)
+    expect(page).not have_text(@genre2.name)
+    expect(page).not have_text(@genre3.name)
   end
 end
