@@ -8,19 +8,3 @@
     <% end %>
   </ul>
 <% end %>
-
-<% if @reviews.any? %>
-<h3>Reviews For</h3>
-<ul>
-  <% @reviews.each do |review| %>
-    <li>
-      <%= link_to review.movie.title, review.movie %>
-      <span class="review"><%= pluralize(review.stars, 'star') %></span>
-      <span class="date">(<%= time_ago_in_words(review.created_at)%> ago.)</span>
-      <p>
-        &quot;<%= review.comment %>&quot;
-      </p>
-    </li>
-  <% end %>
-</ul>
-<% end %>
