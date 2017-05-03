@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe "Viewing the list of movies" do
-  
-  it "shows the movies" do    
+
+  it "shows the movies" do
     movie1 = Movie.create(title: "Iron Man",
                           rating: "PG-13",
                           total_gross: 318412101.00,
@@ -46,13 +46,17 @@ describe "Viewing the list of movies" do
     expect(page).to have_text(movie1.cast)
     expect(page).to have_text(movie1.duration)
   end
-  
+
   it "does not show a movie that hasn't yet been released" do
     movie = Movie.create!(movie_attributes(released_on: 1.month.from_now))
-    
+
     visit movies_path
-    
+
     expect(page).not_to have_text(movie.title)
   end
-  
+
+  it "shows movies assigned certain genres in the side bar" do
+    
+  end
+
 end
