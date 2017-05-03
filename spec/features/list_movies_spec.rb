@@ -55,7 +55,7 @@ describe "Viewing the list of movies" do
     expect(page).not_to have_text(movie.title)
   end
 
-  it "shows movies assigned certain genres in the side bar" do
+  xit "shows movies assigned certain genres in the side bar" do
     movie1 = Movie.create!(movie_attributes(title: "Die Hard"))
     movie2 = Movie.create!(movie_attributes(title: "ET"))
     movie3 = Movie.create!(movie_attributes(title: "Contact"))
