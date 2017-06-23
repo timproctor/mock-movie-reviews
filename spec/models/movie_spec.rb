@@ -207,23 +207,12 @@ describe "A movie" do
     end
   end
 
-  context "hits query" do
-    it "returns movies with a total gross of at least 300_000_000" do
-      movie1 = Movie.create!(movie_attributes(total_gross: 300_000_000))
-      movie2 = Movie.create!(movie_attributes(total_gross: 9_000_000))
+  context "upcoming query" do
+    it "returns the movies with a released on date in the future" do
+      movie1 = Movie.create!(movie_attributes(released_on: 3.months.ago))
+      movie2 = Movie.create!(movie_attributes(released_on: 3.months.from_now))
 
-      expect(Movie.hits).to eq([movie1])
+      expect(Movie.upcoming).to eq([movie2])
     end
   end
-
-  context "flops query" do
-    it "returns movies with a total gross less than 50_000_000" do
-      movie1 = Movie.create!(movie_attributes(total_gross: 300_000_000))
-      movie2 = Movie.create!(movie_attributes(total_gross: 49_000_000))
-
-      expect(Movie.flops).to eq([movie2])
-    end
-  end
-
-
 end
