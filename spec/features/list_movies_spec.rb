@@ -55,24 +55,5 @@ describe "Viewing the list of movies" do
     expect(page).not_to have_text(movie.title)
   end
 
-  xit "shows movies assigned certain genres in the side bar" do
-    movie1 = Movie.create!(movie_attributes(title: "Die Hard"))
-    movie2 = Movie.create!(movie_attributes(title: "ET"))
-    movie3 = Movie.create!(movie_attributes(title: "Contact"))
-    genre1 = Genre.create!(name: "Action")
-    genre2 = Genre.create!(name: "Timeless")
-
-    movie1.genres << genre1
-    movie2.genres << genre2
-
-    visit movies_path
-
-    within("aside#sidebar") do
-      expect(page).to have_link(movie1.title)
-      expect(page).to have_link(movie2.title)
-      expect(page).not_to have_link(movie3.title)
-    end
-
-  end
 
 end
