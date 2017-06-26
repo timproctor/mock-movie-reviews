@@ -185,20 +185,29 @@ describe "A movie" do
     expect(movie.fans).to include(fan2)
   end
 
+  context "upcoming query" do
+    it "returns the movies with a released on date in the future" do
+      movie1 = Movie.create!(movie_attributes(released_on: 3.months.ago))
+      movie2 = Movie.create!(movie_attributes(released_on: 3.months.from_now))
+
+      expect(Movie.upcoming).to eq([movie2])
+    end
+  end
+
   context "released query" do
-    it "returns the movies with a released on date in the past" do
+    xit "returns the movies with a released on date in the past" do
       movie = Movie.create!(movie_attributes(released_on: 3.months.ago))
 
       expect(Movie.released).to include(movie)
     end
 
-    it "does not return movies with a released on date in the future" do
+    xit "does not return movies with a released on date in the future" do
       movie = Movie.create!(movie_attributes(released_on: 3.months.from_now))
 
       expect(Movie.released).not_to include(movie)
     end
 
-    it "returns released movies ordered with the most recently-released movie first" do
+    xit "returns released movies ordered with the most recently-released movie first" do
       movie1 = Movie.create!(movie_attributes(released_on: 3.months.ago))
       movie2 = Movie.create!(movie_attributes(released_on: 2.months.ago))
       movie3 = Movie.create!(movie_attributes(released_on: 1.months.ago))
