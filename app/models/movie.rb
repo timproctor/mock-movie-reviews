@@ -23,8 +23,8 @@ class Movie < ApplicationRecord
   scope :released, -> { where("released_on <= ?", Time.now).order(released_on: :desc) }
   scope :hits, -> { where('total_gross >= 300000000').order(total_gross: :desc) }
   scope :flops, -> { released.where('total_gross >= 300000000').order(total_gross: :desc) }
-  scope :upcoming, -> { where('released_on > ?', Time.now).order(released_on: :asc)}
-
+  scope :upcoming, -> { where('released_on > ?', Time.now).order(released_on: :asc) }
+  scope :rated, ->(rating){ released.where(rating: rating) }
   def self.recently_added
     order('created_at desc').limit(3)
   end

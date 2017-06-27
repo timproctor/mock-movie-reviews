@@ -195,19 +195,19 @@ describe "A movie" do
   end
 
   context "released query" do
-    xit "returns the movies with a released on date in the past" do
+    it "returns the movies with a released on date in the past" do
       movie = Movie.create!(movie_attributes(released_on: 3.months.ago))
 
       expect(Movie.released).to include(movie)
     end
 
-    xit "does not return movies with a released on date in the future" do
+    it "does not return movies with a released on date in the future" do
       movie = Movie.create!(movie_attributes(released_on: 3.months.from_now))
 
       expect(Movie.released).not_to include(movie)
     end
 
-    xit "returns released movies ordered with the most recently-released movie first" do
+    it "returns released movies ordered with the most recently-released movie first" do
       movie1 = Movie.create!(movie_attributes(released_on: 3.months.ago))
       movie2 = Movie.create!(movie_attributes(released_on: 2.months.ago))
       movie3 = Movie.create!(movie_attributes(released_on: 1.months.ago))
