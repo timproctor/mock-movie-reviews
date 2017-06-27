@@ -216,12 +216,4 @@ describe "A movie" do
     end
   end
 
-  context "upcoming query" do
-    it "returns the movies with a released on date in the future" do
-      movie1 = Movie.create!(movie_attributes(released_on: 3.months.ago))
-      movie2 = Movie.create!(movie_attributes(released_on: 3.months.from_now))
-
-      expect(Movie.upcoming).to eq([movie2])
-    end
-  end
 end
