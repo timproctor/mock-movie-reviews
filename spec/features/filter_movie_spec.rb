@@ -25,4 +25,16 @@ describe "Filtering movies" do
 
     expect(page).to have_text(movie.title)
   end
+
+  it "shows upcoming movies" do
+    movie = Movie.create(movie_attributes(released_on: 1.day.from_now))
+
+    visit movies_url
+
+    click "Upcoming"
+
+    expect(current_path).to eq("movies/filter/upcoming")
+
+    expect(page).to have_text(movie.title)
+  end
 end
