@@ -37,4 +37,16 @@ describe "Filtering movies" do
 
     expect(page).to have_text(movie.title)
   end
+
+  it "shows recent movies" do
+    movie = Movie.create!(movie_attributes(released_on: 1.day.ago))
+
+    visit movies_url
+
+    click_link "Recent"
+
+    expect(current_path).to eq("movies/filter/recent")
+
+    expect(page).to have_text(movie.title)
+  end
 end
