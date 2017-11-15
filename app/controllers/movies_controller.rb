@@ -6,6 +6,8 @@ class MoviesController < ApplicationController
     case params[:filter]
     when "hits"
       @movies = Movie.hits
+    when "flops"
+      @movies = Movie.flops
     else
       @movies = Movie.released
     end

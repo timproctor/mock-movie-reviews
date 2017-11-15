@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   root "movies#index"
   get 'movies/filter/hits' => 'movies#index', filter: "hits"
+  get 'movies/filter/flops' => 'movies#index', filter: "flops"
 
   resources :movies do
     resources :reviews
