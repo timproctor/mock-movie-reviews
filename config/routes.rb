@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
 
   root "movies#index"
+  get 'movies/filter/hits' => 'movies#index', filter: "hits"
 
   resources :movies do
     resources :reviews
