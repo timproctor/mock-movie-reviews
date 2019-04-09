@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
   root "movies#index"
 
+  get "movies/filter/hits" => "movies#index", scope: "hits"
+  get "movies/filter/flops" => "movies#index", scope: "flops"
+
   resources :movies do
     resources :reviews
     resources :likes
