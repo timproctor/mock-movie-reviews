@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :users
 
   root "movies#index"
+  get 'movies/filter/hits' => 'movies#index', filter: "hits"
+  get 'movies/filter/flops' => 'movies#index', filter: "flops"
 
   get "movies/filter/hits" => "movies#index", scope: "hits"
   get "movies/filter/flops" => "movies#index", scope: "flops"
