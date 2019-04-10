@@ -3,11 +3,16 @@ class MoviesController < ApplicationController
   before_action :require_admin, except: [:index, :show]
 
   def index
+    @movies = Movie.send(movie_scope)
     case params[:filter]
-    when "hits"
+    when 'hits'
       @movies = Movie.hits
-    when "flops"
+    when 'flops'
       @movies = Movie.flops
+    when 'recent'
+      @movies = Movie.recent
+    when 'upcoming'
+      @movies = Movie.upcoming
     else
       @movies = Movie.released
     end
@@ -63,6 +68,12 @@ private
     params.require(:movie).
       permit(:title, :description, :rating, :released_on, :total_gross,
              :cast, :director, :duration, :image_file_name, genre_ids: [])
+  end
+
+  def movie_scope
+    params[:scope] if params[:scope].in? %w(flops hits recent upcoming)
+
+    :released
   end
 
 end

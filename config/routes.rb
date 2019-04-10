@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'movies/filter/hits' => 'movies#index', filter: "hits"
   get 'movies/filter/flops' => 'movies#index', filter: "flops"
 
-  get "movies/filter/:scope" => "movies#index"
+  get "movies/filter/:scope" => "movies#index", as: :filtered_movies
 
   resources :movies do
     resources :reviews
